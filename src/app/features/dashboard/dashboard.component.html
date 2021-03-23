@@ -1,0 +1,53 @@
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="jumbotron">
+            <h1 class="display-4">Healthy Movies</h1>
+            <p class="lead">Create a simple single page web application using ​The Movie Database API​ displaying a list of movies that can be selected to view more details.</p>
+            <hr class="my-4">
+            <p>The app requirements</p>
+            <ul>
+                <li>
+                     Display a list of movies (​hint: you can use the ​/movie/popular​ endpoint​) and make it sortable either by release date or vote average.
+                </li>
+                <li>
+                    The details view shows the movie’s
+                </li>
+            </ul>
+          </div>
+    </div>
+    
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-12">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Plot Overview</th>
+                    <th scope="col" sortable="release_date" (sort)="onSort($event)" >Release Date</th>
+                    <th scope="col" sortable="vote_average" (sort)="onSort($event)">Average</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let movie of movies;let i = index;">
+                    <td><button class="btn btn-sm btn-success" (click)="open(movie)">Details</button></td>
+                    <td>
+                        <img [src]="movie.poster_path | posterToImg" [alt]="movie.original_title"
+                            class="img-thumbnail img-fluid">
+                    </td>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie?.overview}}</td>
+                    <td>{{movie?.release_date}}</td>
+                    <td>{{movie?.vote_average | number}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
